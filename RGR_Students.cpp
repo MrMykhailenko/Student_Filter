@@ -58,6 +58,12 @@ public:
         return course_number;
     }
 
+    void initial_fast(string name, string grope, unsigned int course) {
+        name_fac = name;
+        grope_index = grope;
+        course_number = course;
+    }
+
 };
 
 
@@ -151,6 +157,16 @@ public:
         birth_date[0] = 1;
         birth_date[1] = 1;
         birth_date[2] = 1999;
+    }
+
+    Student(string name, string surname, int day, int mounth, int year, int phone, string fac, string grope, unsigned int course) {
+        this->name = name;
+        this->surname = surname;
+        birth_date[0] = day;
+        birth_date[1] = mounth;
+        birth_date[2] = year;
+        phone_number = phone;
+        treba.initial_fast(fac, grope, course);
 
     }
 
@@ -170,21 +186,27 @@ public:
     }
 
     void printInfo() {
-        cout << "Student name: " << name << endl;
-        cout << "Student surname: " << surname << endl;
-        cout << "Date of birth: " << birth_date[0] << " " << mounth(birth_date[1]) << " " << birth_date[2] << endl;
-        cout << "Phone number: " << phone_number << endl;
-        cout << "Faculty: " << treba.show_name() << " Grope: " << treba.show_grope() << " Course: " << treba.show_course();
-
+        if (phone_number != NULL) {
+            cout << "Student name: " << name << endl;
+            cout << "Student surname: " << surname << endl;
+            cout << "Date of birth: " << birth_date[0] << " " << mounth(birth_date[1]) << " " << birth_date[2] << endl;
+            cout << "Phone number: " << phone_number << endl;
+            cout << "Faculty: " << treba.show_name() << " Grope: " << treba.show_grope() << " Course: " << treba.show_course() << endl;
+        }
+        else {
+            cout << "You didnt initialise this student" << endl;
+        }
+       
     }
 
 };
 
 int main()
 {
-    Student Billy;
-    Billy.addData();
+    Student Billy, Tony;
+    //Billy.addData();
     Billy.printInfo();
+    Tony.printInfo();
     
 }
 
