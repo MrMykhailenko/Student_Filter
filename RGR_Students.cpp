@@ -72,8 +72,10 @@ class Student {
 private:
     string name;
     string surname;
-    int phone_number;
-    int* birth_date;
+    string phone_number;
+    int birth_day;
+    int birth_mounth;
+    int birth_year;
     Faculty treba;
 
     void add_name() {
@@ -97,7 +99,7 @@ private:
                 cout << "Error" << endl;
                 goto marker_day;
             }
-            birth_date[0] = day;
+            birth_day = day;
 
             cout << endl;
 
@@ -111,7 +113,7 @@ private:
                 cout << "Error" << endl;
                 goto marker_mounth;
             }
-            birth_date[1] = mounth;
+            birth_mounth = mounth;
             cout << endl;
 
         marker_year:
@@ -125,7 +127,7 @@ private:
                 cout << "Error" << endl;
                 goto marker_year;
             }
-            birth_date[2] = year;
+            birth_year = year;
             cout << endl;
 
     }
@@ -153,25 +155,25 @@ public:
     Student() {
         name = "John";
         surname = "Doe";
-        birth_date = new int[3];
-        birth_date[0] = 1;
-        birth_date[1] = 1;
-        birth_date[2] = 1999;
+        birth_day = 1;
+        birth_mounth = 1;
+        birth_year = 1999;
     }
 
-    Student(string name, string surname, int day, int mounth, int year, int phone, string fac, string grope, unsigned int course) {
+    Student(string name, string surname, int day, int mounth, int year, string phone, string fac, string grope, unsigned int course) {
         this->name = name;
         this->surname = surname;
-        birth_date[0] = day;
-        birth_date[1] = mounth;
-        birth_date[2] = year;
+        
+        birth_day = day;
+        birth_mounth = mounth;
+        birth_year = year;
         phone_number = phone;
         treba.initial_fast(fac, grope, course);
 
     }
 
     ~Student() {
-        delete[] birth_date;
+       
     }
 
 
@@ -186,27 +188,112 @@ public:
     }
 
     void printInfo() {
-        if (phone_number != NULL) {
+        if (name != "John" && surname != "Doe" && birth_day != 1 && birth_mounth != 1 && birth_year != 1999) {
             cout << "Student name: " << name << endl;
             cout << "Student surname: " << surname << endl;
-            cout << "Date of birth: " << birth_date[0] << " " << mounth(birth_date[1]) << " " << birth_date[2] << endl;
+            cout << "Date of birth: " << birth_day << " " << mounth(birth_mounth) << " " << birth_year << endl;
             cout << "Phone number: " << phone_number << endl;
-            cout << "Faculty: " << treba.show_name() << " Grope: " << treba.show_grope() << " Course: " << treba.show_course() << endl;
+            cout << "Faculty: " << treba.show_name() << " Grope: " << treba.show_grope() << " Course: " << treba.show_course() << endl << endl;
         }
         else {
-            cout << "You didnt initialise this student" << endl;
+            cout << "You didnt initialise this student" << endl << endl;
         }
        
     }
 
+    bool check_faculty(string faculty) {
+        if (faculty == treba.show_name()) return true;
+        else return false;
+    }
+
+    bool check_year(int year) {
+        if (year < birth_year) return true;
+        else return false;
+    }
+
+    bool check_course(unsigned int course) {
+        if (course == treba.show_course()) return true;
+        else return false;
+    }
+
+    bool check_grope(string grope) {
+        if (grope == treba.show_grope()) return true;
+        else return false;
+    }
+
 };
+
+void sort_by_faculty(Student* array, string faculty, int size) {
+    for(int i = 0; i< size; i++){
+        if (array[i].check_faculty(faculty)) array[i].printInfo();
+    }
+}
+
+void sort_by_year(Student* array, int year, int size) {
+    for (int i = 0; i < size; i++) {
+        if (array[i].check_year(year)) array[i].printInfo();
+    }
+}
+
+void sort_by_course(Student* array, unsigned int course, int size) {
+    for (int i = 0; i < size; i++) {
+        if (array[i].check_course(course)) array[i].printInfo();
+    }
+}
+
+void sort_by_grope(Student* array, string grope, int size) {
+    for (int i = 0; i < size; i++) {
+        if (array[i].check_grope(grope)) array[i].printInfo();
+    }
+}
+
+
 
 int main()
 {
-    Student Billy, Tony;
+    int size = 5;
+    Student* array = new Student[size];
+    
+
+    //Student Billy, Tony;
+
+    //Student Sadie("Sadie", "Loran",18,3,2003, "2547868791" , "Gay", "rg",2);
+
+    array[0] = Student("Sadie", "Loran",18,3,2003, "2547868791", "Gay", "rg",2);
+
+    //Student Mike("Mike", "Masterson", 13, 7, 1998, "1457896320", "Gay", "rg", 3);
+   array[1] = Student("Mike", "Masterson",13,7,1998, "1457896320", "May", "rg",3);
+
+   // Student Lira("Lira", "Loran", 18, 3, 2003, "2365897402", "Gay", "rsr", 1);
+    array[2] = Student("Lira", "Loran",18,3,2022, "2365897402", "Gay", "rsr",1);
+
+    array[3] = Student("Mike", "Masterson", 13, 7, 1996, "1457896320", "Ray", "rg", 3);
+
+    // Student Lira("Lira", "Loran", 18, 3, 2003, "2365897402", "Gay", "rsr", 1);
+    array[4] = Student("Lira", "Doren", 11, 7, 2021, "2365897402", "May", "rsr", 1);
+
     //Billy.addData();
-    Billy.printInfo();
-    Tony.printInfo();
+    //Billy.printInfo();
+    //Tony.printInfo();
+    //Sadie.printInfo();
+    //Mike.printInfo();
+    //Lira.printInfo();
+    
+    //array[0].printInfo();
+    //array[1].printInfo();
+    //array[2].printInfo();
+
+    //sort_by_faculty(array, "Ray", size);
+
+    //sort_by_year(array,2000, size);
+
+    //sort_by_course(array,2, size);
+
+    sort_by_grope(array, "rsr", size);
+
+    
+    
+    delete[] array;
     
 }
 
