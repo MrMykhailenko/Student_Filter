@@ -7,6 +7,7 @@ using namespace std;
 
 string mounth(int data);
 
+
 class Faculty{
 private:
     string name_fac;
@@ -14,6 +15,19 @@ private:
     unsigned int course_number;
 
 public:
+
+    Faculty(){
+        name_fac = "Missing";
+        grope_index = "Missing";
+        course_number = 0;
+    }
+
+    Faculty(string name, string grope, unsigned int course) {
+        name_fac = name;
+        grope_index = grope;
+        course_number = course;
+    }
+
     void add_name() {
         string name_fac;
         cout << "Enter the name of faculty: ";
@@ -64,7 +78,26 @@ public:
         course_number = course;
     }
 
+    Faculty& operator=(const Faculty& other) {
+        if (this == &other) {
+            return *this;
+        }
+        name_fac = other.name_fac;
+        grope_index = other.grope_index;
+        course_number = other.course_number;
+        
+
+        return *this;
+    }
+
+    friend ostream& operator<<(ostream& os, const Faculty& obj);
+
 };
+
+ostream& operator<<(ostream& os, const Faculty& obj) {
+    os << "Faculty: " << obj.name_fac << " Grope: " << obj.grope_index << " Course: " << obj.course_number << endl;
+    return os;
+}
 
 
 class Student {
@@ -178,8 +211,8 @@ public:
 
 
     void addData() {
-        //add_name();
-        //add_birth();
+        add_name();
+        add_birth();
         add_phone();
         treba.add_name();
         treba.add_grope();
@@ -221,7 +254,41 @@ public:
         else return false;
     }
 
+    Student& operator=(const Student& other) {
+        if (this == &other) {
+            return *this;
+        }
+
+        name = other.name;
+        surname = other.surname;
+        phone_number = other.surname;
+        birth_day = other.birth_day;
+        birth_mounth = other.birth_mounth;
+        birth_year = other.birth_year;
+        treba = other.treba;
+
+        return *this;
+    }
+
+    friend ostream& operator<<(ostream& os, const Student& obj);
+
 };
+
+ostream& operator<<(ostream& os, const Student& obj) {
+    if (obj.name != "John" && obj.surname != "Doe" && obj.birth_day != 1 && obj.birth_mounth != 1 && obj.birth_year != 1999) {
+        os << "Student name: " << obj.name << endl;
+        os << "Student surname: " << obj.surname << endl;
+        os << "Date of birth: " << obj.birth_day << " " << mounth(obj.birth_mounth) << " " << obj.birth_year << endl;
+        os << "Phone number: " << obj.phone_number << endl;
+        os << obj.treba << endl;
+    }
+    else {
+        os << "You didnt initialise this student" << endl << endl;
+    }
+    return os;
+}
+
+
 
 void sort_by_faculty(Student* array, string faculty, int size) {
     for(int i = 0; i< size; i++){
@@ -289,9 +356,12 @@ int main()
 
     //sort_by_course(array,2, size);
 
-    sort_by_grope(array, "rsr", size);
+    //sort_by_grope(array, "rsr", size);
 
-    
+   Student Antony;
+   Antony.printInfo();
+   Antony = array[2];
+   cout << Antony;
     
     delete[] array;
     
