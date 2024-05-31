@@ -86,6 +86,23 @@ void Student::printInfo() {
     }
 }
 
+string Student::toStrig() {
+    string data;
+
+    if (name != "John" && surname != "Doe" && birth_day != 1 && birth_month != 1 && birth_year != 1999) {
+        data = "Student name: " + name + "\n";
+        data += "Student surname:" + surname + "\n";
+        data += "Date of birth: " + birth_day + '.' + birth_month + '.' + birth_year + '\n';
+        data += "Phone number: " + phone_number + "\n";
+        data += "Faculty: " + treba.show_name() + " Group: " + treba.show_grope() + " Course: " + to_string(treba.show_course()) + '\n' + '\n';
+    }
+    else {
+        data = "You didn't initialize this student \n" ;
+    }
+    return data;
+
+}
+
 bool Student::check_faculty(string faculty) {
     return faculty == treba.show_name();
 }

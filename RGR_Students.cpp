@@ -14,16 +14,19 @@ int main()
 {
     
     Student Sadie("Sadie", "Loran", 18, 3, 2003, "2547868791", "Ray", "rg", 2);
-    Student Lilith("Lilith", "Morningstar", 16, 6, 1966, "2547868791", "Ray", "rg", 1);
+    Student Lilith("Lilith", "Morningstar", 16, 6, 2001, "2547868791", "Ray", "rg", 1);
     Student George("George", "Masterson", 18, 3, 2003, "2547868791", "May", "rg", 2);
+    Student Billy("Billy", "Masterson", 11, 7, 2006, "2547868791", "Ray", "rg", 2); 
 
     Array Master;
     Master.addNew(Sadie);
-    Master.addNew(Lilith);
+    Master.addNew(Billy);
     Master.addNew(George);
-    Master.addNew();
+    Master.addNew(Lilith);
 
     Master.sort_by_year(2001);
+
+   Master.create_database();
 }
 
 

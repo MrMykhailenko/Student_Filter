@@ -15,6 +15,7 @@ private:
 public:
     LogFile();
     void write_log(string text);
+    void write_all(string text);
 };
 
 #endif // LOGFILE_H

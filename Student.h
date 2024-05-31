@@ -30,6 +30,7 @@ public:
 
     void addData();
     void printInfo();
+    string toStrig();
 
     bool check_faculty(string faculty);
     bool check_year(int year);

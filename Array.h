@@ -22,6 +22,7 @@ public:
     void sort_by_year(int year);
     void sort_by_course(unsigned int course);
     void sort_by_group(std::string group);
+    void create_database();
 };
 
 #endif // ARRAY_H

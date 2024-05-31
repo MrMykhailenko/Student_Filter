@@ -1,5 +1,6 @@
 #include "Array.h"
 #include "LogFile.h"
+LogFile Data;
 
 Array::Array() {
     size = 1;
@@ -95,4 +96,13 @@ void Array::sort_by_group(std::string group) {
     for (int i = 0; i < size; i++) {
         if (array[i].check_group(group)) array[i].printInfo();
     }
+}
+
+void Array::create_database() {
+    string data;
+    for (int i = 1; i < real_size; i++) {
+        data += array[i].toStrig();
+        
+    }
+    Data.write_all(data);
 }
