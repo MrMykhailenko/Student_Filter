@@ -2,7 +2,7 @@
 #define ARRAY_H
 
 #include <string>
-#include "Student.h" // Include the header file for the Student class
+#include "Student.h" 
 
 class Array {
 private:
@@ -25,4 +25,4 @@ public:
     void create_database();
 };
 
-#endif // ARRAY_H
+#endif 

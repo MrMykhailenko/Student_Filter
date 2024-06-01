@@ -3,7 +3,7 @@
 
 #include <iostream>
 #include <string>
-#include "LogFile.h" // Assuming LogFile is another class
+#include "LogFile.h" 
 
 using namespace std;
 

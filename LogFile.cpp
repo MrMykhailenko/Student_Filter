@@ -7,7 +7,7 @@ void LogFile::write_log(string text) {
     ofstream outFile(file, ofstream::app);
 
     if (!outFile) {
-        cout << "Помилка, шановний!" << endl;
+        cout << "Error" << endl;
     }
 
     SYSTEMTIME st;
@@ -21,11 +21,10 @@ void LogFile::write_all(string text) {
     ofstream outFile("data_all.txt", ofstream::trunc);
     string encryptedText = "";
     if (!outFile) {
-        cout << "Помилка, шановний!" << endl;
+        cout << "Error" << endl;
     }
 
     for (int i = 0; i < text.length(); i++) {
-        // Додаємо до коду символа зсув, обмеживаючи його діапазон
         char encryptedChar = ' ';
         if (isalpha(text[i])) {
             if (islower(text[i])) {

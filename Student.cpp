@@ -1,5 +1,6 @@
 #include "Student.h"
 #include "LogFile.h"
+int global_id = 0;
 
 void Student::add_name() {
     cout << "Enter the student name: ";
@@ -60,7 +61,7 @@ Student::Student(string name, string surname, int day, int month, int year, stri
 }
 
 Student::~Student() {
-    // Destructor implementation
+
 }
 
 void Student::addData() {
@@ -90,7 +91,7 @@ string Student::toStrig() {
     string data;
 
     if (name != "John" && surname != "Doe" && birth_day != 1 && birth_month != 1 && birth_year != 1999) {
-        data = "Student name: " + name + "\n";
+        data += "Student name: " + name + "\n";
         data += "Student surname:" + surname + "\n";
         data += "Date of birth: " + birth_day + '.' + birth_month + '.' + birth_year + '\n';
         data += "Phone number: " + phone_number + "\n";

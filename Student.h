@@ -8,6 +8,7 @@
 
 using namespace std;
 
+
 class Student {
 private:
     string name;
@@ -41,4 +42,4 @@ public:
     friend ostream& operator<<(ostream& os, const Student& obj);
 };
 
-#endif // STUDENT_H
+#endif

@@ -4,7 +4,7 @@
 #include <iostream>
 #include <fstream>
 #include <string>
-#include <windows.h> // Для використання SYSTEMTIME
+#include <windows.h> 
 
 using namespace std;
 
@@ -18,4 +18,4 @@ public:
     void write_all(string text);
 };
 
-#endif // LOGFILE_H
+#endif 

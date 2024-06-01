@@ -75,26 +75,54 @@ Array::Array(const Array& temporary) {
 }
 
 void Array::sort_by_faculty(std::string faculty) {
+    int cntr = 0;
     for (int i = 0; i < size; i++) {
-        if (array[i].check_faculty(faculty)) array[i].printInfo();
+        if (array[i].check_faculty(faculty)) {
+            array[i].printInfo();
+            cntr++;
+        }
+    }
+    if (cntr == 0) {
+        cout << "No students found" << endl;
     }
 }
 
 void Array::sort_by_year(int year) {
+    int cntr = 0;
     for (int i = 0; i < size; i++) {
-        if (array[i].check_year(year)) array[i].printInfo();
+        if (array[i].check_year(year)) {
+            array[i].printInfo();
+            cntr++;
+        }
+    }
+    if (cntr == 0) {
+        cout << "No students found" << endl;
     }
 }
 
 void Array::sort_by_course(unsigned int course) {
+    int cntr = 0;
     for (int i = 0; i < size; i++) {
-        if (array[i].check_course(course)) array[i].printInfo();
+        if (array[i].check_course(course)) {
+            array[i].printInfo();
+            cntr++;
+        }
+    }
+    if (cntr == 0) {
+        cout << "No students found" << endl;
     }
 }
 
 void Array::sort_by_group(std::string group) {
+    int cntr = 0;
     for (int i = 0; i < size; i++) {
-        if (array[i].check_group(group)) array[i].printInfo();
+        if (array[i].check_group(group)) {
+            array[i].printInfo();
+            cntr++;
+        }
+    }
+    if (cntr == 0) {
+        cout << "No students found" << endl;
     }
 }
 
